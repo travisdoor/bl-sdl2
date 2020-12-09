@@ -13,6 +13,16 @@ Install `SDL2` development package with your favorite package manager.
 apt install libsdl2-dev
 ```
 
+## macOS
+Clone the repository into to the `bl` API folder.
+```bash
+cd $(blc -where-is-api)
+git clone https://github.com/travisdoor/bl-sdl2.git sdl2
+```
+Install `SDL2` development package with your favorite package manager.
+```bash
+brew install sdl2
+```
 
 # Example
 Minimal SDL2 application.
