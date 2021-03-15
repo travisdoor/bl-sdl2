@@ -14,15 +14,15 @@ sdl2_copy_deps :: fn (dest := ".") {
     print("Copy dependencies of '%' to '%'\n", MODULE_NAME, dest); 
     l :: bprint(buf, "copy %/%/*.dll %", dir, LIB_DIR, dest);
     str :: {:string: l, buf.ptr};
-    string_replace_all(&str, '/', '\\');
+    String.replace_all(&str, '/', '\\');
     os_execute(str);
 }
 
 #private
 get_module_dir :: fn () string #inline {
     dir: string;
-    if string_split_by_last(#file, '/', &dir, null) {
+    if String.split_by_last(#file, '/', &dir, null) {
         return dir;
     }   
-    return string_empty;
+    return String.empty;
 }
