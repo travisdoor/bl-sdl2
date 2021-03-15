@@ -1,7 +1,5 @@
-// Build tools for SDL2 needed on Windows.
-#load "sdl2/build.bl"
-
 build :: fn () #build_entry {
     exe :: add_executable("sdt-test");
     add_unit(exe, "main.bl");
+    compile(exe);
 }

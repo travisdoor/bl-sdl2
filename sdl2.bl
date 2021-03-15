@@ -1,42 +1,44 @@
-SDL_INIT_TIMER               : u32 : 0x00000001;
-SDL_INIT_AUDIO 	             : u32 : 0x00000010;
-SDL_INIT_VIDEO 	             : u32 : 0x00000020;
-SDL_INIT_JOYSTICK            : u32 : 0x00000200;
-SDL_INIT_HAPTIC              : u32 : 0x00001000;
-SDL_INIT_GAMECONTROLLER      : u32 : 0x00002000;
-SDL_INIT_EVENTS              : u32 : 0x00004000;
-SDL_INIT_NOPARACHUTE         : u32 : 0x00100000;
-SDL_INIT_EVERYTHING          : u32 : SDL_INIT_TIMER | SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC | SDL_INIT_GAMECONTROLLER | SDL_INIT_EVENTS;
-SDL_WINDOW_FULLSCREEN        : u32 : 0x00000001;
-SDL_WINDOW_OPENGL            : u32 : 0x00000002;
-SDL_WINDOW_SHOWN             : u32 : 0x00000004;
-SDL_WINDOW_HIDDEN            : u32 : 0x00000008;
-SDL_WINDOW_BORDERLESS        : u32 : 0x00000010;
-SDL_WINDOW_RESIZABLE         : u32 : 0x00000020;
-SDL_WINDOW_MINIMIZED         : u32 : 0x00000040;
-SDL_WINDOW_MAXIMIZED         : u32 : 0x00000080;
-SDL_WINDOW_INPUTGRABBED      : u32 : 0x00000100;
-SDL_WINDOW_INPUTFOCUS        : u32 : 0x00000200;
-SDL_WINDOW_MOUSEFOCUS        : u32 : 0x00000400;
-SDL_WINDOW_FULLSCREENDESKTOP : u32 : SDL_WINDOW_FULLSCREEN | 0x00001000;
-SDL_WINDOW_FOREIGN           : u32 : 0x00000800;
-SDL_WINDOW_ALLOWHIGHDPI      : u32 : 0x00002000;
-SDL_WINDOW_MOUSECAPTURE      : u32 : 0x00004000;
-SDL_WINDOW_ALWAYSONTOP       : u32 : 0x00008000;
-SDL_WINDOW_SKIPTASKBAR       : u32 : 0x00010000;
-SDL_WINDOW_UTILITY           : u32 : 0x00020000;
-SDL_WINDOW_TOOLTIP           : u32 : 0x00040000;
-SDL_WINDOW_POPUPMENU         : u32 : 0x00080000;
-SDL_WINDOW_VULKAN            : u32 : 0x10000000;
-SDL_RENDERER_SOFTWARE        : u32 : 0x00000001;
-SDL_RENDERER_ACCELERATED     : u32 : 0x00000002;
-SDL_RENDERER_PRESENTVSYNC    : u32 : 0x00000004;
-SDL_RENDERER_TARGETTEXTURE   : u32 : 0x00000008;
-SDL_FLIP_NONE                : u32 : 0x00000000;
-SDL_FLIP_HORIZONTAL          : u32 : 0x00000001;
-SDL_FLIP_VERTICAL            : u32 : 0x00000002;
+#scope Sdl
 
-SDL_EventType :: enum u32 {
+INIT_TIMER               : u32 : 0x00000001;
+INIT_AUDIO 	             : u32 : 0x00000010;
+INIT_VIDEO 	             : u32 : 0x00000020;
+INIT_JOYSTICK            : u32 : 0x00000200;
+INIT_HAPTIC              : u32 : 0x00001000;
+INIT_GAMECONTROLLER      : u32 : 0x00002000;
+INIT_EVENTS              : u32 : 0x00004000;
+INIT_NOPARACHUTE         : u32 : 0x00100000;
+INIT_EVERYTHING          : u32 : INIT_TIMER | INIT_AUDIO | INIT_VIDEO | INIT_JOYSTICK | INIT_HAPTIC | INIT_GAMECONTROLLER | INIT_EVENTS;
+WINDOW_FULLSCREEN        : u32 : 0x00000001;
+WINDOW_OPENGL            : u32 : 0x00000002;
+WINDOW_SHOWN             : u32 : 0x00000004;
+WINDOW_HIDDEN            : u32 : 0x00000008;
+WINDOW_BORDERLESS        : u32 : 0x00000010;
+WINDOW_RESIZABLE         : u32 : 0x00000020;
+WINDOW_MINIMIZED         : u32 : 0x00000040;
+WINDOW_MAXIMIZED         : u32 : 0x00000080;
+WINDOW_INPUTGRABBED      : u32 : 0x00000100;
+WINDOW_INPUTFOCUS        : u32 : 0x00000200;
+WINDOW_MOUSEFOCUS        : u32 : 0x00000400;
+WINDOW_FULLSCREENDESKTOP : u32 : WINDOW_FULLSCREEN | 0x00001000;
+WINDOW_FOREIGN           : u32 : 0x00000800;
+WINDOW_ALLOWHIGHDPI      : u32 : 0x00002000;
+WINDOW_MOUSECAPTURE      : u32 : 0x00004000;
+WINDOW_ALWAYSONTOP       : u32 : 0x00008000;
+WINDOW_SKIPTASKBAR       : u32 : 0x00010000;
+WINDOW_UTILITY           : u32 : 0x00020000;
+WINDOW_TOOLTIP           : u32 : 0x00040000;
+WINDOW_POPUPMENU         : u32 : 0x00080000;
+WINDOW_VULKAN            : u32 : 0x10000000;
+RENDERER_SOFTWARE        : u32 : 0x00000001;
+RENDERER_ACCELERATED     : u32 : 0x00000002;
+RENDERER_PRESENTVSYNC    : u32 : 0x00000004;
+RENDERER_TARGETTEXTURE   : u32 : 0x00000008;
+FLIP_NONE                : u32 : 0x00000000;
+FLIP_HORIZONTAL          : u32 : 0x00000001;
+FLIP_VERTICAL            : u32 : 0x00000002;
+
+EventType :: enum u32 {
     FIRSTEVENT                :: 0;    
     QUIT                      :: 0x100; 
     APP_TERMINATING;
@@ -87,10 +89,10 @@ SDL_EventType :: enum u32 {
     RENDER_TARGETS_RESET      :: 0x2000; 
     RENDER_DEVICE_RESET;      
     USEREVENT                 :: 0x8000;
-    SDL_LASTEVENT             :: 0xFFFF
+    LASTEVENT             :: 0xFFFF
 };
 
-SDL_Scancode :: enum {
+Scancode :: enum {
     UNKNOWN :: 0;
     A :: 4;
     B :: 5;
@@ -334,14 +336,14 @@ SDL_Scancode :: enum {
     APP2 :: 284;
     AUDIOREWIND :: 285;
     AUDIOFASTFORWARD :: 286;
-    SDL_NUM_SCANCODES :: 512
+    NUM_SCANCODES :: 512
 };
 
-SDL_Window   :: u8;
-SDL_Renderer :: u8;
-SDL_Texture  :: u8;
+Window   :: u8;
+Renderer :: u8;
+Texture  :: u8;
 
-SDL_Surface :: struct {
+Surface :: struct {
     flags:      s32;
     format:    *u8;
     w:          s32;
@@ -351,64 +353,64 @@ SDL_Surface :: struct {
     userdata:  *u8;
     locked:     s32;
     lock_data: *u8;
-    clip_rect:  SDL_Rect;
+    clip_rect:  Rect;
     map:       *u8;
     refcount:   s32
 };
 
-SDL_Rect :: struct {
+Rect :: struct {
     x: s32;
     y: s32;
     w: s32;
     h: s32
 };
 
-SDL_Point :: struct {
+Point :: struct {
     x: s32;
     y: s32
 };
 
-SDL_Event :: struct {
-    type: SDL_EventType;
+Event :: struct {
+    type: EventType;
     _padding: [52]u8
 };
 
-SDL_KeyboardEvent :: struct {
-    type: SDL_EventType;
+KeyboardEvent :: struct {
+    type: EventType;
     timestamp: u32;
     windowID: u32;
     state: u8;
     repeat: u8;
     padding2: u8;
     padding3: u8;
-    keysym: SDL_Scancode
+    keysym: Scancode
 };
 
-SDL_Init                     :: fn (flags: u32) s32 #extern;
-SDL_Quit                     :: fn () #extern;
-SDL_CreateWindow             :: fn (name: *u8, x: s32, y: s32, w: s32, h: s32, flags: u32) *SDL_Window #extern;
-SDL_DestroyWindow            :: fn (window: *SDL_Window) #extern;
-SDL_Delay                    :: fn (ms: u32) #extern;
-SDL_PollEvent                :: fn (event: *SDL_Event) s32 #extern;
-SDL_CreateRenderer           :: fn (window: *SDL_Window, index: s32, flags: u32) *SDL_Renderer #extern;
-SDL_DestroyRenderer          :: fn (renderer: *SDL_Renderer) #extern;
-SDL_CreateTextureFromSurface :: fn (renderer: *SDL_Renderer, surface: *SDL_Surface) *SDL_Texture #extern;
-SDL_DestroyTexture           :: fn (texture: *SDL_Texture) #extern;
-SDL_RenderPresent	     :: fn (renderer: *SDL_Renderer) #extern;
-SDL_SetRenderDrawColor	     :: fn (renderer: *SDL_Renderer, r: u8, g: u8, b: u8, a: u8) s32 #extern;
-SDL_RenderClear 	     :: fn (renderer: *SDL_Renderer) s32 #extern;
-SDL_RenderCopy		     :: fn (renderer: *SDL_Renderer, texture: *SDL_Texture, srcrect: *SDL_Rect, dstrect: *SDL_Rect) s32 #extern;
-SDL_RenderCopyEx	     :: fn (renderer: *SDL_Renderer, texture: *SDL_Texture, srcrect: *SDL_Rect, dstrect: *SDL_Rect, angle: f64, center: *SDL_Point, flip: u32) s32 #extern;
-SDL_FreeSurface              :: fn (surface: *SDL_Surface) #extern;
-SDL_GetKeyboardState 	     :: fn (numkeys: *s32) *u8 #extern;
-SDL_GetTicks 		     :: fn () u32 #extern;
-SDL_GetError 		     :: fn () *u8 #extern;
-SDL_QueryTexture             :: fn (texture: *SDL_Texture, format: *u32, access: *s32, w: *s32, h: *s32) #extern;
-SDL_RenderFillRect           :: fn (renderer: *SDL_Renderer, rect: *SDL_Rect) s32 #extern;
+Init :: fn (flags: u32) s32 #extern "SDL_Init";
+Quit :: fn () #extern "SDL_Quit";
+CreateWindow :: fn (name: *u8, x: s32, y: s32, w: s32, h: s32, flags: u32) *Window #extern "SDL_CreateWindow";
+DestroyWindow :: fn (window: *Window) #extern "SDL_DestroyWindow";
+Delay :: fn (ms: u32) #extern "SDL_Delay";
+PollEvent :: fn (event: *Event) s32 #extern "SDL_PollEvent";
+CreateRenderer :: fn (window: *Window, index: s32, flags: u32) *Renderer #extern "SDL_CreateRenderer";
+DestroyRenderer :: fn (renderer: *Renderer) #extern "SDL_DestroyRenderer";
+CreateTextureFromSurface :: fn (renderer: *Renderer, surface: *Surface) *Texture #extern "SDL_CreateTextureFromSurface";
+DestroyTexture :: fn (texture: *Texture) #extern "SDL_DestroyTexture";
+RenderPresent :: fn (renderer: *Renderer) #extern "SDL_RenderPresent";
+SetRenderDrawColor :: fn (renderer: *Renderer, r: u8, g: u8, b: u8, a: u8) s32 #extern "SDL_SetRenderDrawColor";
+RenderClear :: fn (renderer: *Renderer) s32 #extern "SDL_RenderClear";
+RenderCopy :: fn (renderer: *Renderer, texture: *Texture, srcrect: *Rect, dstrect: *Rect) s32 #extern "SDL_RenderCopy";
+RenderCopyEx :: fn (renderer: *Renderer, texture: *Texture, srcrect: *Rect, dstrect: *Rect, angle: f64, center: *Point, flip: u32) s32 #extern "SDL_RenderCopyEx";
+FreeSurface :: fn (surface: *Surface) #extern "SDL_FreeSurface";
+GetKeyboardState :: fn (numkeys: *s32) *u8 #extern "SDL_GetKeyboardState";
+GetTicks :: fn () u32 #extern "SDL_GetTicks";
+GetError :: fn () *u8 #extern "SDL_GetError";
+QueryTexture :: fn (texture: *Texture, format: *u32, access: *s32, w: *s32, h: *s32) #extern "SDL_QueryTexture";
+RenderFillRect :: fn (renderer: *Renderer, rect: *Rect) s32 #extern "SDL_RenderFillRect";
 
 
-SDL_KeyPressed :: fn (scancode: SDL_Scancode) bool {
-    tmp := SDL_GetKeyboardState(null);
+KeyPressed :: fn (scancode: Scancode) bool {
+    tmp := GetKeyboardState(null);
     if tmp == null {
         return false;
     }
