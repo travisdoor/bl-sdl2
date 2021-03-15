@@ -4,7 +4,7 @@ Experimental SDL2 wrapper for BL.
 # Installation
 ## Windows
 
-Clone the repository into the `bl` API folder. Use `blc -where-is-api` to get correct path.
+Clone the repository into the `bl` API folder. Use `blc --where-is-api` to get correct path.
 ```bash
 cd path/to/api
 git clone https://github.com/travisdoor/bl-sdl2.git sdl2
@@ -14,7 +14,7 @@ git clone https://github.com/travisdoor/bl-sdl2.git sdl2
 
 Clone the repository into to the `bl` API folder.
 ```bash
-cd $(blc -where-is-api)
+cd $(blc --where-is-api)
 git clone https://github.com/travisdoor/bl-sdl2.git sdl2
 ```
 Install `SDL2` development package with your favorite package manager.
@@ -25,7 +25,7 @@ apt install libsdl2-dev
 ## macOS
 Clone the repository into to the `bl` API folder.
 ```bash
-cd $(blc -where-is-api)
+cd $(blc --where-is-api)
 git clone https://github.com/travisdoor/bl-sdl2.git sdl2
 ```
 Install `SDL2` development package with your favorite package manager.
@@ -43,33 +43,33 @@ SCREEN_WIDTH :: 800;
 SCREEN_HEIGHT :: 600;
 
 main :: fn () s32 {
-    if SDL_Init(SDL_INIT_VIDEO) != 0 { panic("Unable to init SDL"); }
-    defer SDL_Quit();
-    window :: SDL_CreateWindow(
+    if Sdl.Init(Sdl.INIT_VIDEO) != 0 { panic("Unable to init SDL"); }
+    defer Sdl.Quit();
+    window :: Sdl.CreateWindow(
         TITLE.ptr,
         100,
         100,
         SCREEN_WIDTH,
         SCREEN_HEIGHT,
-        SDL_WINDOW_SHOWN
+        Sdl.WINDOW_SHOWN
     );
-    defer SDL_DestroyWindow(window);
+    defer Sdl.DestroyWindow(window);
     if !window {
         panic("Cannot create window.");
     }
-    renderer :: SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
-    defer SDL_DestroyRenderer(renderer);
+    renderer :: Sdl.CreateRenderer(window, -1, Sdl.RENDERER_SOFTWARE);
+    defer Sdl.DestroyRenderer(renderer);
     if !renderer {
         panic("Cannot create renderer.");
     }
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    Sdl.SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
     will_quit := false;
     loop !will_quit {
         os_sleep_ms(16.);
-        event: SDL_Event;
-        loop SDL_PollEvent(&event) != 0 {
-            will_quit = event.type == SDL_EventType.QUIT;
+        event: Sdl.Event;
+        loop Sdl.PollEvent(&event) != 0 {
+            will_quit = event.type == Sdl.EventType.QUIT;
         }
     }
     return 0;

@@ -1,5 +1,5 @@
 build :: fn () #build_entry {
-    exe :: add_executable("sdt-test");
+    exe :: add_executable("game");
     add_unit(exe, "main.bl");
     compile(exe);
 }
